@@ -30,7 +30,7 @@ export default function VideosPage() {
     const router = useRouter();
     return (
         <ScreenPage>
-            <Appbar.Header>
+            <Appbar.Header elevated>
                 <Appbar.Content title="Videos" />
             </Appbar.Header>
             <ScrollView>

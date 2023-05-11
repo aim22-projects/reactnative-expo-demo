@@ -3,10 +3,9 @@ import { MD3LightTheme as DefaultTheme, MD3DarkTheme as DefaultDarkTheme, Provid
 
 const theme = {
     ...DefaultTheme,
-    // dark: true,
+    roundness: 2,
     colors: {
         ...DefaultTheme.colors,
-        // ...DefaultDarkTheme.colors,
         primary: 'tomato',
         secondary: 'yellow',
     },

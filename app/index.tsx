@@ -6,7 +6,7 @@ export default function Index() {
   const theme = useTheme();
   return (
     <ScreenPage>
-      <Appbar.Header>
+      <Appbar.Header elevated>
         <Appbar.BackAction onPress={() => { }} />
         <Appbar.Content title="Title" />
         <Appbar.Action icon="calendar" onPress={() => { }} />
