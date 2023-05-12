@@ -1,9 +1,16 @@
 import { StyleSheet, Text, View } from "react-native";
 import { Appbar, useTheme, withTheme } from 'react-native-paper';
 import ScreenPage from "../src/components/Page";
-import { Link } from "expo-router";
+import { Link, useRouter } from "expo-router";
+import { useEffect } from "react";
 export default function Index() {
   const theme = useTheme();
+  const router = useRouter();
+
+  useEffect(() => {
+    router.replace("videos/");
+  }, []);
+
   return (
     <ScreenPage>
       <Appbar.Header elevated>
