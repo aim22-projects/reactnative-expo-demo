@@ -7,9 +7,9 @@ export default function Index() {
   const theme = useTheme();
   const router = useRouter();
 
-  useEffect(() => {
-    router.replace("videos/");
-  }, []);
+  // useEffect(() => {
+  //   router.push("videos/");
+  // }, []);
 
   return (
     <ScreenPage>
