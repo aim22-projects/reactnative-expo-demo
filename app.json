@@ -28,14 +28,15 @@
           "action": "VIEW",
           "data": {
             "scheme": "https",
-            "host": "myapp22.com"
+            "host": "myapp.project.com"
           },
           "category": [
             "BROWSABLE",
             "DEFAULT"
           ]
         }
-      ]
+      ],
+      "package": "com.project.myapp"
     },
     "web": {
       "favicon": "./assets/favicon.png",
