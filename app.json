@@ -48,6 +48,15 @@
     "web": {
       "favicon": "./assets/favicon.png",
       "bundler": "metro"
-    }
+    },
+    "plugins": [
+      [
+        "expo-notifications",
+        {
+          "icon": "./local/assets/favicon.png",
+          "color": "#ffffff"
+        }
+      ]
+    ]
   }
 }
