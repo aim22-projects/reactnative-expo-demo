@@ -1,6 +1,5 @@
 {
   "expo": {
-    "scheme": "myapp",
     "name": "streaming_app_client",
     "slug": "streaming_app_client",
     "version": "1.0.0",
@@ -26,10 +25,18 @@
       "intentFilters": [
         {
           "action": "VIEW",
-          "data": {
-            "scheme": "https",
-            "host": "myapp.project.com"
-          },
+          "autoVerify": true,
+          "data": [
+            {
+              "scheme": "https",
+              "host": "myapp.project.com"
+            },
+            {
+              "scheme": "http",
+              "host": "myapp.project.com",
+              "pathPrefix": "/videos/play"
+            }
+          ],
           "category": [
             "BROWSABLE",
             "DEFAULT"
