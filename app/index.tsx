@@ -20,6 +20,7 @@ export default function Index() {
         <Appbar.Action icon="magnify" onPress={() => { }} />
       </Appbar.Header>
       <Link href="videos/">Videos</Link>
+      <Link href="notifications/">Notifications</Link>
     </ScreenPage>
   );
 }
