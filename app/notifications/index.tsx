@@ -1,9 +1,10 @@
 import { Appbar, Button } from "react-native-paper";
 import ScreenPage from "../../src/components/Page";
-import { registerForPushNotificationsAsync, schedulePushNotification } from '../../src/services/local_notifications';
+import { initializeNotifications, registerForPushNotificationsAsync, schedulePushNotification } from '../../src/services/local_notifications';
 import { useEffect, useRef, useState } from "react";
 
 import * as Notifications from 'expo-notifications';
+
 
 export default function NotificationsPage() {
 
@@ -13,6 +14,8 @@ export default function NotificationsPage() {
     const responseListener = useRef<any>();
 
     useEffect(() => {
+        initializeNotifications();
+        
         registerForPushNotificationsAsync().then(token => setExpoPushToken(token ?? ''));
 
         notificationListener.current = Notifications.addNotificationReceivedListener(notification => {
@@ -34,7 +37,7 @@ export default function NotificationsPage() {
             <Appbar.Header elevated>
                 <Appbar.Content title="Videos" />
             </Appbar.Header>
-            <Button onPress={async () => await schedulePushNotification()}>Press to schedule notification</Button>
+            <Button onPress={schedulePushNotification}>Press to schedule notification</Button>
         </ScreenPage>
     );
 }
