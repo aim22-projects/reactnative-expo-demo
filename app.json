@@ -1,6 +1,6 @@
 {
   "expo": {
-    "scheme": "com.project.myapp",
+    "scheme": "myapp",
     "name": "streaming_app_client",
     "slug": "streaming_app_client",
     "version": "1.0.0",
