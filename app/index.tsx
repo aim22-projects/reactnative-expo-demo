@@ -15,8 +15,8 @@ export default function Index() {
     <ScreenPage>
       <Appbar.Header elevated>
         <Appbar.Content title="Expo Test" />
-        <Appbar.Action icon="calendar" onPress={() => { }} />
-        <Appbar.Action icon="magnify" onPress={() => { }} />
+        <Appbar.Action icon="bell" onPress={() => { }} />
+        <Appbar.Action icon="cog" onPress={() => { }} />
       </Appbar.Header>
       <ScrollView>
         <List.Section>
