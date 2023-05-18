@@ -3,13 +3,14 @@ import ScreenPage from "../../src/components/Page";
 import { ScrollView } from "react-native";
 import { useRouter } from "expo-router";
 import { videosList } from "../../src/repositories/videos";
+import AppbarBackAction from "../../src/components/AppbarBackAction";
 
 export default function VideosPage() {
     const router = useRouter();
     return (
         <ScreenPage>
             <Appbar.Header elevated>
-                <Appbar.BackAction onPress={() => router.back()} />
+                <AppbarBackAction />
                 <Appbar.Content title="Videos" />
             </Appbar.Header>
             <ScrollView>

@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from "react";
 
 import * as Notifications from 'expo-notifications';
 import { useRouter } from "expo-router";
+import AppbarBackAction from "../../src/components/AppbarBackAction";
 
 
 export default function NotificationsPage() {
@@ -36,7 +37,7 @@ export default function NotificationsPage() {
     return (
         <ScreenPage>
             <Appbar.Header elevated>
-                <Appbar.BackAction onPress={() => router.back()} />
+                <AppbarBackAction />
                 <Appbar.Content title="Notifications" />
             </Appbar.Header>
             <List.Section>
