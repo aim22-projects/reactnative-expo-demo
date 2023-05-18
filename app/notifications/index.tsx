@@ -1,4 +1,4 @@
-import { Appbar, Button, List } from "react-native-paper";
+import { Appbar, Button, List, Text } from "react-native-paper";
 import ScreenPage from "../../src/components/Page";
 import { initializeNotifications, registerForPushNotificationsAsync, schedulePushNotification } from '../../src/services/local_notifications';
 import { useEffect, useRef, useState } from "react";
@@ -40,12 +40,16 @@ export default function NotificationsPage() {
                 <AppbarBackAction />
                 <Appbar.Content title="Notifications" />
             </Appbar.Header>
-            <List.Section>
-                <List.Item
-                    title="Schedule Notification"
-                    onPress={schedulePushNotification}
-                    left={props => <List.Icon icon="bell" {...props} />}
-                />
+            <List.Section style={{ padding: 3 }}>
+                <Text style={{ alignSelf: 'center', marginBottom: 8, }}>
+                    Schedule Notification by pressing button
+                </Text>
+                <Button
+                    mode="contained"
+                    icon={props => <List.Icon icon="bell-plus" {...props} />}
+                    onPress={schedulePushNotification}>
+                    Schedule
+                </Button>
             </List.Section>
         </ScreenPage>
     );
