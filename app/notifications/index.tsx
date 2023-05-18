@@ -1,13 +1,14 @@
-import { Appbar, Button } from "react-native-paper";
+import { Appbar, Button, List } from "react-native-paper";
 import ScreenPage from "../../src/components/Page";
 import { initializeNotifications, registerForPushNotificationsAsync, schedulePushNotification } from '../../src/services/local_notifications';
 import { useEffect, useRef, useState } from "react";
 
 import * as Notifications from 'expo-notifications';
+import { useRouter } from "expo-router";
 
 
 export default function NotificationsPage() {
-
+    const router = useRouter();
     const [expoPushToken, setExpoPushToken] = useState('');
     const [notification, setNotification] = useState<Notifications.Notification>();
     const notificationListener = useRef<any>();
@@ -15,7 +16,7 @@ export default function NotificationsPage() {
 
     useEffect(() => {
         initializeNotifications();
-        
+
         registerForPushNotificationsAsync().then(token => setExpoPushToken(token ?? ''));
 
         notificationListener.current = Notifications.addNotificationReceivedListener(notification => {
@@ -35,9 +36,16 @@ export default function NotificationsPage() {
     return (
         <ScreenPage>
             <Appbar.Header elevated>
-                <Appbar.Content title="Videos" />
+                <Appbar.BackAction onPress={() => router.back()} />
+                <Appbar.Content title="Notifications" />
             </Appbar.Header>
-            <Button onPress={schedulePushNotification}>Press to schedule notification</Button>
+            <List.Section>
+                <List.Item
+                    title="Schedule Notification"
+                    onPress={schedulePushNotification}
+                    left={props => <List.Icon icon="bell" {...props} />}
+                />
+            </List.Section>
         </ScreenPage>
     );
 }

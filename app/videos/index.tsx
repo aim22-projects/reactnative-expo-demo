@@ -9,6 +9,7 @@ export default function VideosPage() {
     return (
         <ScreenPage>
             <Appbar.Header elevated>
+                <Appbar.BackAction onPress={() => router.back()} />
                 <Appbar.Content title="Videos" />
             </Appbar.Header>
             <ScrollView>
