@@ -1,27 +1,28 @@
 import { useRouter } from "expo-router";
 import { ScrollView } from "react-native";
-import { Appbar, Avatar, List, useTheme } from 'react-native-paper';
+import { Appbar, Avatar, Button, Dialog, Divider, List, Portal, Text, useTheme } from 'react-native-paper';
 import ScreenPage from "../src/components/Page";
+import { useState } from "react";
 
 export default function Index() {
   const theme = useTheme();
   const router = useRouter();
-
-  // useEffect(() => {
-  //   router.push("videos/");
-  // }, []);
-
+  const [visible, setVisible] = useState(false);
+  const showDialog = () => setVisible(true);
+  const hideDialog = () => setVisible(false);
   return (
     <ScreenPage>
+      <AccountDialog visible={visible} hideDialog={hideDialog} />
       <Appbar.Header elevated>
         <Appbar.Content title="Expo Test" />
         <Appbar.Action icon="bell" onPress={() => { }} />
         <Appbar.Action
+          animated={false}
           icon={() => <Avatar.Image
             size={24}
             source={require('../assets/man.png')}
           />}
-          onPress={() => { }} />
+          onPress={() => { showDialog() }} />
       </Appbar.Header>
       <ScrollView>
         <List.Section>
@@ -50,4 +51,35 @@ export default function Index() {
       </ScrollView>
     </ScreenPage>
   );
+}
+
+function AccountDialog(props: { visible: boolean, hideDialog: () => void }) {
+  return (
+    <Portal>
+      <Dialog visible={props.visible} onDismiss={props.hideDialog} >
+        <Text variant="titleLarge" style={{ alignSelf: 'center' }}>Expo Test</Text>
+        <List.Item
+          title="Test user"
+          description="testuser@mail.com"
+          left={props => <Avatar.Image
+            {...props}
+            size={24}
+            source={require('../assets/man.png')}
+          />}
+        />
+        <Divider />
+        <List.Section>
+          <List.Item
+            title="Action 1"
+            onPress={() => { }}
+            left={props => <List.Icon icon="plus" {...props} />}
+          />
+          <List.Item
+            title="Action 2"
+            onPress={() => { }}
+            left={props => <List.Icon icon="plus" {...props} />}
+          />
+        </List.Section>
+      </Dialog>
+    </Portal>);
 }
