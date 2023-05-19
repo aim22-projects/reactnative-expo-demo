@@ -6,7 +6,6 @@ type IUseVisibility = [
     hide: () => void,
 ]
 
-// TODO: testing is pending 
 /**
  * Return IUseVisibility, a stateful value (boolean) and functions to show (set to true) and hide (set to false)
  * @returns IUseVisibility
