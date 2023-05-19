@@ -3,13 +3,14 @@ import { ScrollView } from "react-native";
 import { Appbar, Avatar, Button, Dialog, Divider, List, Portal, Text, useTheme } from 'react-native-paper';
 import ScreenPage from "../src/components/Page";
 import { useState } from "react";
+import { useVisibility } from "../src/hooks/useVisibility";
 
 export default function Index() {
   const theme = useTheme();
   const router = useRouter();
-  const [visible, setVisible] = useState(false);
-  const showDialog = () => setVisible(true);
-  const hideDialog = () => setVisible(false);
+
+  const [visible, showDialog, hideDialog] = useVisibility();
+
   return (
     <ScreenPage>
       <AccountDialog visible={visible} hideDialog={hideDialog} />
