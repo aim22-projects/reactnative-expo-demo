@@ -1,12 +1,11 @@
 import { useRouter } from "expo-router";
 import { ScrollView } from "react-native";
-import { Appbar, Avatar, List, useTheme } from 'react-native-paper';
+import { Appbar, Avatar, List } from 'react-native-paper';
+import AccountDialog from "../src/components/AccountDialog";
 import ScreenPage from "../src/components/Page";
 import { useVisibility } from "../src/hooks/useVisibility";
-import AccountDialog from "../src/components/AccountDialog";
 
 export default function Index() {
-  const theme = useTheme();
   const router = useRouter();
 
   const [visible, showDialog, hideDialog] = useVisibility();

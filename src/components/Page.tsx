@@ -1,17 +1,20 @@
-import { Children, ReactNode } from "react";
+import { ReactNode } from "react";
 import { View } from "react-native";
 import { useTheme } from "react-native-paper";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-export default function ScreenPage(props: { children: ReactNode, safeArea?: boolean }) {
-    const theme = useTheme();
-    return props.safeArea ? (
-        <SafeAreaView style={{ backgroundColor: theme.colors.background, flex: 1 }}>
-            {props.children}
-        </SafeAreaView>
-    ) : (
-        <View style={{ backgroundColor: theme.colors.background, flex: 1 }}>
-            {props.children}
-        </View>
+interface ScreenPageProps {
+    children: ReactNode;
+    safeArea?: boolean;
+}
+
+export default function ScreenPage({ children, safeArea }: ScreenPageProps) {
+    const { colors } = useTheme();
+    const Container = safeArea ? SafeAreaView : View;
+
+    return (
+        <Container style={{ backgroundColor: colors.background, flex: 1 }}>
+            {children}
+        </Container>
     );
 }
