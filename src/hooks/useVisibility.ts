@@ -14,14 +14,14 @@ type IUseVisibility = [
  */
 export function useVisibility(): IUseVisibility {
     // Initializing a boolean variable 'visible' with a default state of 'false' using useState hook
-    const [visible, setVisible] = useState(false);
+    const [isVisible, setIsVisible] = useState(false);
 
     // Defining a function called 'show' that sets the 'visible' state to true
-    const show = () => setVisible(true);
+    const show = () => setIsVisible(true);
 
     // Defining a function called 'hide' that sets the 'visible' state to false
-    const hide = () => setVisible(false);
+    const hide = () => setIsVisible(false);
 
     // Returning the 'visible' state along with 'hide' and 'show' functions in a tuple
-    return [visible, show, hide];
+    return [isVisible, show, hide];
 }
