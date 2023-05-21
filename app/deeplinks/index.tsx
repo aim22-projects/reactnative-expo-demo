@@ -1,14 +1,17 @@
-import { Appbar, Button, IconButton, List, Text, TextInput } from "react-native-paper";
-import ScreenPage from "../../src/components/Page";
-import { useRouter } from "expo-router";
 import * as Clipboard from 'expo-clipboard';
-import { deeplinksList } from '../../src/repositories/deeplinks';
+import { Appbar, List, Snackbar, TextInput } from "react-native-paper";
 import AppbarBackAction from "../../src/components/AppbarBackAction";
+import ScreenPage from "../../src/components/Page";
+import { useVisibility } from "../../src/hooks/useVisibility";
+import { deeplinksList } from '../../src/repositories/deeplinks';
 
 export default function NotificationsPage() {
-    const router = useRouter();
+    const [visible, showSnackbar, hideSnackbar] = useVisibility();
     return (
         <ScreenPage>
+            <Snackbar visible={visible} onDismiss={hideSnackbar}>
+                Link is copied to clipboard.
+            </Snackbar>
             <Appbar.Header elevated>
                 <AppbarBackAction />
                 <Appbar.Content title="Deep Linking" />
@@ -24,13 +27,16 @@ export default function NotificationsPage() {
                             focusable={false}
                             editable={false}
                             multiline
-                        // right={
-                        //     <TextInput.Icon
-                        //         icon="content-copy"
-                        //         onPress={() => Clipboard.setStringAsync(link)}
-                        //         forceTextInputFocus={false}
-                        //     />
-                        // }
+                            right={
+                                <TextInput.Icon
+                                    icon="content-copy"
+                                    onPress={() => {
+                                        Clipboard.setStringAsync(link);
+                                        showSnackbar();
+                                    }}
+                                    forceTextInputFocus={false}
+                                />
+                            }
                         />
                     ))
                 }
