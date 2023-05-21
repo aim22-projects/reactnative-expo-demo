@@ -1,6 +1,6 @@
 import { Appbar, Button, List, Text } from "react-native-paper";
 import ScreenPage from "../../src/components/Page";
-import { initializeNotifications, registerForPushNotificationsAsync, schedulePushNotification } from '../../src/services/local_notifications';
+import { getPushToken, initializeNotifications, registerForPushNotificationsAsync, schedulePushNotification } from '../../src/services/local_notifications';
 import { useEffect, useRef, useState } from "react";
 
 import * as Notifications from 'expo-notifications';
@@ -17,9 +17,10 @@ export default function NotificationsPage() {
 
     useEffect(() => {
         initializeNotifications();
-
-        registerForPushNotificationsAsync().then(token => setExpoPushToken(token ?? ''));
-
+        // 
+        registerForPushNotificationsAsync();
+        // get push token
+        // getPushToken().then(token => setExpoPushToken(token ?? ''));
         notificationListener.current = Notifications.addNotificationReceivedListener(notification => {
             setNotification(notification);
         });

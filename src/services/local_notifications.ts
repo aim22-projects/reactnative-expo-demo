@@ -13,8 +13,6 @@ export function initializeNotifications() {
 }
 
 export async function registerForPushNotificationsAsync() {
-    let token;
-
     if (Platform.OS === 'android') {
         await Notifications.setNotificationChannelAsync('default', {
             name: 'default',
@@ -35,13 +33,12 @@ export async function registerForPushNotificationsAsync() {
             alert('Failed to get push token for push notification!');
             return;
         }
-        token = (await Notifications.getExpoPushTokenAsync()).data;
-        console.log(token);
     } else {
         alert('Must use physical device for Push Notifications');
     }
-
-    return token;
+}
+export async function getPushToken() {
+    return (await Notifications.getExpoPushTokenAsync()).data;
 }
 
 export async function schedulePushNotification() {
