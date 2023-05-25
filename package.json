@@ -2,6 +2,7 @@
   "name": "streaming_app_client",
   "version": "0.0.1",
   "private": true,
+  "main": "src/index.tsx",
   "scripts": {
     "android": "react-native run-android",
     "ios": "react-native run-ios",
