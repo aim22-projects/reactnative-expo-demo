@@ -1,3 +1,5 @@
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 import { useColorScheme } from 'react-native';
 import { MD3LightTheme, MD3DarkTheme, PaperProvider } from 'react-native-paper';
 
@@ -17,12 +19,17 @@ const darkTheme = {
   },
 };
 
+
+const AppNavigator = createStackNavigator();
+
 function App() {
   const isDarkMode = useColorScheme() === 'dark';
 
   return (
     <PaperProvider theme={isDarkMode ? darkTheme : theme}>
-      {/* children */}
+      <NavigationContainer>
+        {/* children */}
+      </NavigationContainer>
     </PaperProvider>
   );
 }
