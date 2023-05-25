@@ -1,26 +1,30 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
+import { useColorScheme } from 'react-native';
+import { MD3LightTheme, MD3DarkTheme, PaperProvider } from 'react-native-paper';
 
-import {
-  useColorScheme,
-} from 'react-native';
+const theme = {
+  ...MD3LightTheme,
+  colors: {
+    ...MD3LightTheme.colors,
+    secondary: 'yellow',
+  },
+};
 
-import {
-  Colors,
-} from 'react-native/Libraries/NewAppScreen';
+const darkTheme = {
+  ...MD3DarkTheme,
+  colors: {
+    ...MD3DarkTheme.colors,
+    secondary: 'yellow',
+  },
+};
 
-function App(): JSX.Element {
+function App() {
   const isDarkMode = useColorScheme() === 'dark';
 
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
-
-  return (<></>);
+  return (
+    <PaperProvider theme={isDarkMode ? darkTheme : theme}>
+      {/* children */}
+    </PaperProvider>
+  );
 }
 
 export default App;
